@@ -58,13 +58,13 @@
                         </div>
                     </div>
                     <div class="menu">
+                        <div class="contents">
                             <img v-bind:src="images.categories.greyOverlay" alt="greyOverlay" id="greyOverlay">
-                        <i class="active fa-solid fa-compass "></i>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <i class="fa-solid fa-user"></i>
+                            <i class="active fa-solid fa-compass "></i>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-user"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="container-02">
                 </div>
             </mq-layout>
         </div>
@@ -244,7 +244,7 @@ export default {
     .section-02 {
         position: relative;
         .slideContainer  {
-            @include scrollbars( .5em, slategray, rgb(255, 255, 255));
+            @include scrollbars( 0em, slategray, rgb(255, 255, 255));
             overflow-x: scroll ;
             display: flex;
             flex-direction: row;
@@ -325,24 +325,25 @@ export default {
     .menu {
         position: fixed;
         width: 100vw;
-        height: 10%;
         bottom: 0%;
-        margin-left: -5vw;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        #greyOverlay {
-            position: absolute;
-            z-index: -1;
-        }
-        i {
-            color: #BAC0C5;
-            padding: 15px 55px;
-            font-size: 25px;
-            cursor: pointer;
-        }
-        .active{
-            color: #7B40FF;
+        left: 0;
+        .contents {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            #greyOverlay {
+                position: absolute;
+                z-index: -1;
+            }
+            i {
+                color: #BAC0C5;
+                padding: 15px 55px;
+                font-size: 25px;
+                cursor: pointer;
+            }
+            .active{
+                color: #7B40FF;
+            }
         }
     }
 }
