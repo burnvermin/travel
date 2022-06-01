@@ -283,7 +283,7 @@ export default {
         height: 7px;
         width: 7px;
         background-color: #D2D7DC;
-        top: 95%;
+        top: 90%;
         left: 44%;
         border-radius: 15px;
         z-index: -1;
@@ -293,7 +293,7 @@ export default {
         height: 7px;
         width: 7px;
         background-color: #D2D7DC;
-        top: 95%;
+        top: 90%;
         left: 47%;
         border-radius: 15px;
         z-index: -1;
@@ -303,7 +303,7 @@ export default {
         height: 7px;
         width: 7px;
         background-color: #D2D7DC;
-        top: 95%;
+        top: 90%;
         left: 50%;
         border-radius: 15px;
         z-index: -1;
@@ -313,7 +313,7 @@ export default {
         height: 7px;
         width: 7px;
         background-color: #D2D7DC;
-        top: 95%;
+        top: 90%;
         left: 53%;
         border-radius: 15px;
         z-index: -1;
@@ -324,7 +324,7 @@ export default {
         height: 7px;
         width: 15px;
         background-color: #7B40FF;
-        top: 95%;
+        top: 90%;
         left: 50%;
         border-radius: 15px;
       }
@@ -333,7 +333,7 @@ export default {
         height: 7px;
         width: 15px;
         background-color: #D2D7DC;
-        top: 95%;
+        top: 90%;
         left: 51.5%;
         border-radius: 15px;
         z-index: -1;
@@ -345,7 +345,7 @@ export default {
         height: 7px;
         width: 15px;
         background-color: #7B40FF;
-        top: 95%;
+        top: 90%;
         left: 44%;
         border-radius: 15px;
       }
@@ -354,7 +354,7 @@ export default {
         height: 7px;
         width: 15px;
         background-color: #D2D7DC;
-        top: 95%;
+        top: 90%;
         left: 45.5%;
         border-radius: 15px;
         z-index: -1;
@@ -366,7 +366,7 @@ export default {
         height: 7px;
         width: 15px;
         background-color: #7B40FF;
-        top: 95%;
+        top: 90%;
         left: 47%;
         border-radius: 15px;
       }
@@ -375,7 +375,7 @@ export default {
         height: 7px;
         width: 15px;
         background-color: #D2D7DC;
-        top: 95%;
+        top: 90%;
         left: 48.5%;
         border-radius: 15px;
         z-index: -1;
