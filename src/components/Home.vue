@@ -458,13 +458,13 @@ export default {
                             left: 0;
                             width: 100%;
                             background-color: #7B40FF;
-                            border-top-right-radius: 25px;
-                            border-top-left-radius: 25px;
                             outline: none;
                             border: none;
                             padding: 2% 5% 5%;
                             color: #fff;
                             text-align: center;
+                            border-top-right-radius: 25px;
+                            border-top-left-radius: 25px;
                             animation: float-in 800ms;
                             i {
                             transform: scale(1.6);
