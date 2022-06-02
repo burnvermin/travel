@@ -378,6 +378,7 @@ export default {
                 }
                  img{
                         height: 100vh;
+                        width: 100vw;
                     }
                 .content {
                     position: relative;
@@ -418,7 +419,7 @@ export default {
                     }
                     .centerContainer {
                         position: absolute;
-                        top: 45%;
+                        top: 40%;
                         left: 0;
                         margin: auto;
                         .center {
