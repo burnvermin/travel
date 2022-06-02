@@ -13,8 +13,32 @@
                     <div class="section-02" >
                         <div  class="slideContainer">
                             <div v-for="world in images.world" :key="world.id" class="slide">
-                                <img v-bind:src="world.img" alt="world" id="world" @click="getActiveWorld(world.id, world.name, world.desc)">
+                                <img v-bind:src="world.img" alt="world" id="world" @click="getActiveWorld(world.id, world.name, world.desc, world.img, world.Bg)">
                             </div>
+                        </div>
+                        <div class="information">
+                                <img class="enlargeImage" v-bind:src="bg" alt="world" id="world">
+                                <div class="content">
+                                    <div class="top">
+                                        <button @click="enlargeImg()" ><i class="fa-solid fa-angle-left"></i></button>
+
+                                        <p>{{place}}</p>
+                                    </div>
+                                    <div class="centerContainer">
+                                        <div class="center">
+                                            <h5><i class="fa-solid fa-cloud-sun"> </i> &nbsp;&nbsp;22<sup>o </sup>  Mostly Cloudy</h5>
+                                            <h2>{{desc}}</h2>
+                                            <p>
+                                                {{desc}} is the third state of the Chevok continent. Famous for its advanced
+                                                civilization and tourist attractions.
+                                            </p>
+                                        </div>
+                                        <div class="bottom">
+                                            <h3><a href=""><i class="fa-solid fa-vr-cardboard"></i>VIRTUAL TOUR</a></h3>
+                                        </div>
+                                        <button><h3><i class="fa-solid fa-rocket"> </i>  SCHEDULE TRIP </h3><i class="fa-solid fa-angle-up"></i></button>
+                                    </div>
+                                </div>
                         </div>
                         <div class="bottom">
                             <div class="slideBottom">
@@ -77,6 +101,7 @@
 import DisplayPicture from '../assets/images/home/Display-Picture.png'
 import world01 from '../assets/images/home/world1.png'
 import world02 from '../assets/images/home/world2.png'
+import world02BG from '../assets/images/home/BG.png'
 import greyOverlay from '../assets/images/home/greyOverlay.png'
 import category01 from '../assets/images/home/category01.png'
 import category02 from '../assets/images/home/category02.png'
@@ -92,18 +117,21 @@ export default {
   data () {
     return {
       activeWorld: 1,
+      currentImg: world01,
       images: {
         DisplayPicture: DisplayPicture,
         world: [
           {
             id: 1,
             img: world01,
+            Bg: world02BG,
             name: 'Sarturn',
             desc: 'JALINGO WEST'
           },
           {
             id: 2,
             img: world02,
+            Bg: world02BG,
             name: 'Jupyter',
             desc: 'KWARSIAN'
 
@@ -111,18 +139,21 @@ export default {
           {
             id: 3,
             img: world01,
+            Bg: world02BG,
             name: 'Sarturn',
             desc: 'JALINGO WEST'
           },
           {
             id: 4,
             img: world02,
+            Bg: world02BG,
             name: 'Jupyter',
             desc: 'KWARSIAN'
           },
           {
             id: 5,
             img: world01,
+            Bg: world02BG,
             name: 'Sarturn',
             desc: 'JALINGO WEST'
           }
@@ -138,7 +169,8 @@ export default {
         }
       },
       place: 'Saturn',
-      desc: 'JALINGO WEST'
+      desc: 'JALINGO WEST',
+      bg: null
 
     }
   },
@@ -151,11 +183,24 @@ export default {
   mounted: function () {
   },
   methods: {
-    getActiveWorld (id, name, desc) {
+    getActiveWorld (id, name, desc, img, Bg) {
       this.activeWorld = id
       this.place = name
       this.desc = desc
+      this.currentImg = img
+      this.bg = Bg
       console.log(this.activeWorld)
+      document.querySelector('.enlargeImage').classList.add('show')
+      document.querySelector('.information').classList.add('show')
+      setTimeout(() => this.delay(), 500)
+    },
+    delay () {
+      document.querySelector('.content').classList.add('show')
+    },
+    enlargeImg () {
+      document.querySelector('.content').classList.remove('show')
+      document.querySelector('.enlargeImage').classList.remove('show')
+      document.querySelector('.information').classList.remove('show')
     },
     nextPage () {
       document.querySelector('.container-01').classList.add('nextPage')
@@ -191,6 +236,23 @@ export default {
         margin-top: 10%;
         position: absolute;
         opacity: 0;
+    }
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes float-in {
+    0% {
+        opacity: 0;
+        margin-top: 50%;
+    }
+    100% {
+        opacity: 1;
     }
 }
 .nextPage {
@@ -248,8 +310,11 @@ export default {
             overflow-x: scroll ;
             display: flex;
             flex-direction: row;
+                transition: transform 500ms ease-in-out;
             img {
                 padding: 5px;
+                transform: scale(1);
+                transition: transform 500ms ease-in-out;
             }
         }
         .bottom {
@@ -285,6 +350,138 @@ export default {
                 height: 3em;
                 cursor: pointer;
             }
+        }
+        .information {
+            transform: scale(0);
+            position: fixed;
+        }
+        .information.show {
+            position: fixed;
+            transform: scale(1);
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 5;
+                .enlargeImage {
+                    position: absolute;
+                    transform: scale(0);
+                    transition: all 500ms ease-in-out;
+                    z-index: 5;
+                }
+
+                .enlargeImage.show {
+                    top: 0%;
+                    left: 0%;
+                    transform: scale(1);
+                    z-index: 5;
+                }
+                 img{
+                        height: 100vh;
+                    }
+                .content {
+                    position: relative;
+                    height: 100vh;
+                    display: none;
+                    color: #fff;
+                }
+                .content.show{
+                    top: 0;
+                    z-index: 6;
+                    display: block;
+                    padding: 5% 5% 0;
+                    text-align: center;
+
+                    .top {
+                        text-align: center;
+                        display: flex;
+                        flex-direction: row;
+                        width: 100%;
+                        button {
+                            border: none;
+                            outline: none;
+                            cursor: pointer;
+                            background: none;
+                            i {
+                                color: #fff;
+                                font-size: 24px;
+                            }
+                        }
+                        p {
+                            position: absolute;
+                            padding: 5px;
+                            left: 42%;
+                            margin: 0;
+                            transform: scale(1.3);
+                            font-weight: bolder;
+                        }
+                    }
+                    .centerContainer {
+                        position: absolute;
+                        top: 45%;
+                        left: 0;
+                        margin: auto;
+                        .center {
+                            width: 90%;
+                            margin: auto;
+                            i {
+                                transform: scale(1.5);
+                            }
+                            h5 {
+                                animation: appear 700ms;
+                            }
+                            h2 {
+                                animation: float-in 800ms;
+                            }
+                            p {
+                                animation: float-in 800ms;
+                            }
+                        }
+                        .bottom {
+                            margin-top: 20%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            animation: float-in 800ms;
+                            a {
+                                text-decoration: none;
+                                color: inherit;
+                                cursor: pointer;
+                                i {
+                                    padding: 0 3%;
+                                }
+                            }
+                        }
+                        button {
+                            position: fixed;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                            background-color: #7B40FF;
+                            border-top-right-radius: 25px;
+                            border-top-left-radius: 25px;
+                            outline: none;
+                            border: none;
+                            padding: 2% 5% 5%;
+                            color: #fff;
+                            text-align: center;
+                            animation: float-in 800ms;
+                            i {
+                            transform: scale(1.6);
+                            padding: 0 10px;
+                            }
+                            i, h3 {
+                                animation: appear 1000ms;
+                            }
+                            .fa-solid.fa-angle-up {
+                                position: absolute;
+                                top: 32%;
+                                right: 5%;
+                                animation: appear 1000ms;
+                            }
+                        }
+                    }
+                }
         }
     }
     .section-03 {
